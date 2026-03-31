@@ -1,0 +1,220 @@
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+// Animation Variants
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6 }
+};
+
+const staggerContainer = {
+  initial: {},
+  whileInView: { transition: { staggerChildren: 0.1 } }
+};
+
+export default function ReachoraFullSite() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const services = [
+    { title: "Instagram Growth", desc: "Full management & organic reach strategies." },
+    { title: "YouTube Growth & SEO", desc: "Keyword optimization to rank your videos #1." },
+    { title: "Facebook Ads", desc: "High-converting ad campaigns for maximum ROI." },
+    { title: "Video Editing", desc: "Viral-style Reels and Shorts that keep viewers hooked." },
+    { title: "Graphic Design", desc: "High-CTR thumbnails and premium brand visuals." },
+    { title: "Content Strategy", desc: "1-on-1 consulting to build your personal brand." },
+  ];
+
+  const pricing = [
+    { name: "Basic", price: "₹2,999", features: ["8 Premium Reels", "Growth Strategy", "Custom Thumbnails"], popular: false },
+    { name: "Pro", price: "₹4,999", features: ["20 Premium Reels", "Full SEO & Growth", "Engagement Mgmt", "Priority Support"], popular: true },
+    { name: "Premium", price: "₹8,999", features: ["Full Management", "Paid Ads Mgmt", "Weekly Consulting", "Scale to Millions"], popular: false },
+  ];
+
+  return (
+    <div className="bg-black text-gray-200 min-h-screen font-sans selection:bg-yellow-500 selection:text-black">
+      
+      {/* --- NAVIGATION --- */}
+      <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/5 px-6 py-4">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <div className="text-2xl font-black text-white tracking-tighter italic">REACHORA</div>
+          
+          <div className="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest text-gray-400">
+            <a href="#about" className="hover:text-yellow-500 transition">About</a>
+            <a href="#services" className="hover:text-yellow-500 transition">Services</a>
+            <a href="#pricing" className="hover:text-yellow-500 transition">Pricing</a>
+            <a href="#contact" className="hover:text-yellow-500 transition">Contact</a>
+          </div>
+
+          <a href="tel:9983739816" className="hidden md:block bg-yellow-500 text-black px-6 py-2 rounded-full text-xs font-black hover:scale-105 transition">
+            GET STARTED
+          </a>
+
+          {/* Mobile Menu Toggle */}
+          <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? "CLOSE" : "MENU"}
+          </button>
+        </div>
+      </nav>
+
+      {/* --- HERO SECTION --- */}
+      <section className="relative pt-48 pb-32 px-6 overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_rgba(234,179,8,0.15)_0%,_transparent_70%)] -z-10" />
+        
+        <div className="text-center max-w-5xl mx-auto">
+          <motion.span 
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+            className="text-yellow-500 font-bold tracking-[0.3em] text-xs uppercase mb-4 block"
+          >
+            The Ultimate Social Media Engine
+          </motion.span>
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}
+            className="text-6xl md:text-9xl font-black text-white tracking-tighter leading-none mb-8"
+          >
+            Go Viral. <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Get Noticed.</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
+            className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed mb-12"
+          >
+            Reachora helps creators and brands dominate the digital landscape through data-driven content and viral engineering.
+          </motion.p>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            <button className="bg-yellow-500 text-black px-10 py-5 rounded-2xl font-black text-lg shadow-xl hover:scale-105 transition">
+              Start Your Journey
+            </button>
+            <a href="tel:9983739816" className="border border-gray-700 px-10 py-5 rounded-2xl font-black text-lg hover:bg-white hover:text-black transition inline-block">
+              Call Now
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* --- ABOUT & FOUNDERS --- */}
+      <section id="about" className="py-24 px-6 max-w-7xl mx-auto border-y border-white/5">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <motion.div {...fadeInUp}>
+            <h2 className="text-4xl font-black mb-6 text-white uppercase tracking-tighter">We Build Empires</h2>
+            <p className="text-gray-400 text-lg leading-relaxed mb-8">
+              Founded on the principles of speed and quality, Reachora Cloud is more than an agency. We are the strategic backbone for influencers and businesses who want to scale from hundreds to millions.
+            </p>
+            <div className="space-y-4">
+              <div className="flex items-center gap-4 bg-[#0A0A0A] p-5 rounded-2xl border border-gray-900">
+                <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-black font-black">GS</div>
+                <div>
+                  <h4 className="text-white font-bold">Gautam Sharma</h4>
+                  <p className="text-xs text-yellow-500 font-bold uppercase tracking-widest">CEO & Founder</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 bg-[#0A0A0A] p-5 rounded-2xl border border-gray-900">
+                <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-black font-black">YJ</div>
+                <div>
+                  <h4 className="text-white font-bold">Yashraj Joshi</h4>
+                  <p className="text-xs text-yellow-500 font-bold uppercase tracking-widest">Co-Founder & CMO</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-[#111] p-10 rounded-3xl border border-gray-800 text-center">
+              <h3 className="text-5xl font-black text-yellow-500 italic">50K+</h3>
+              <p className="text-gray-500 text-xs mt-2 uppercase font-bold tracking-widest">Followers Added</p>
+            </div>
+            <div className="bg-[#111] p-10 rounded-3xl border border-gray-800 text-center">
+              <h3 className="text-5xl font-black text-white italic">20K+</h3>
+              <p className="text-gray-500 text-xs mt-2 uppercase font-bold tracking-widest">YouTube Subs</p>
+            </div>
+            <div className="col-span-2 bg-gradient-to-br from-yellow-500 to-yellow-600 p-10 rounded-3xl text-black">
+              <p className="text-2xl font-black italic">"High-quality edits & viral content strategy that actually converts."</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- SERVICES --- */}
+      <section id="services" className="py-32 px-6">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-4xl font-black text-white mb-20 tracking-tighter uppercase">Premium Services</h2>
+          <motion.div 
+            variants={staggerContainer} initial="initial" whileInView="whileInView"
+            className="grid md:grid-cols-3 gap-6"
+          >
+            {services.map((s, i) => (
+              <motion.div key={i} variants={fadeInUp} className="bg-[#0A0A0A] p-10 rounded-3xl border border-gray-900 hover:border-yellow-500/50 transition-all text-left">
+                <div className="w-12 h-1 bg-yellow-500 mb-6" />
+                <h3 className="text-xl font-bold text-white mb-2">{s.title}</h3>
+                <p className="text-gray-500 text-sm">{s.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* --- PRICING --- */}
+      <section id="pricing" className="py-32 px-6 bg-[#050505]">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-4xl font-black text-white mb-20 tracking-tighter uppercase">Select Your Plan</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {pricing.map((plan, i) => (
+              <motion.div 
+                key={i} {...fadeInUp}
+                className={`${plan.popular ? 'bg-yellow-500 transform md:scale-110 shadow-2xl border-4 border-yellow-400' : 'bg-[#111] border border-gray-800'} p-10 rounded-[2.5rem] relative flex flex-col`}
+              >
+                {plan.popular && <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-black px-4 py-1 rounded-full text-[10px] font-black uppercase">Best Value</div>}
+                <h3 className={`text-2xl font-black ${plan.popular ? 'text-black' : 'text-white'}`}>{plan.name}</h3>
+                <p className={`text-5xl font-black my-6 ${plan.popular ? 'text-black' : 'text-yellow-500'}`}>{plan.price}</p>
+                <ul className={`space-y-4 mb-10 text-left ${plan.popular ? 'text-black font-medium' : 'text-gray-400'}`}>
+                  {plan.features.map((f, index) => <li key={index}>• {f}</li>)}
+                </ul>
+                <button className={`w-full py-4 rounded-2xl font-black transition-all ${plan.popular ? 'bg-black text-white hover:opacity-90' : 'bg-white/5 border border-gray-800 hover:bg-white/10'}`}>
+                  Select Plan
+                </button>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- CONTACT & FOOTER --- */}
+      <section id="contact" className="py-32 px-6">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-5xl font-black mb-16 text-white tracking-tighter uppercase">Let's Talk Results</h2>
+          <div className="grid md:grid-cols-2 gap-6 text-left">
+            <div className="bg-[#111] p-10 rounded-[2rem] border border-gray-800 group hover:border-yellow-500 transition">
+              <p className="text-yellow-500 text-xs font-black uppercase tracking-[0.2em] mb-4">Direct Contact</p>
+              <h4 className="text-2xl text-white font-bold">+91 6376100139</h4>
+              <h4 className="text-2xl text-white font-bold">+91 9983739816</h4>
+            </div>
+            <div className="bg-[#111] p-10 rounded-[2rem] border border-gray-800 group hover:border-yellow-500 transition">
+              <p className="text-yellow-500 text-xs font-black uppercase tracking-[0.2em] mb-4">Online Presence</p>
+              <h4 className="text-2xl text-white font-bold">reachoracloud@gmail.com</h4>
+              <p className="text-gray-500 mt-2">IG: @reachora.cloud</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="py-20 px-6 border-t border-white/5 bg-black">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+          <div className="text-center md:text-left">
+            <p className="text-white font-black text-3xl tracking-tighter italic">REACHORA</p>
+            <p className="text-gray-600 text-sm mt-2 max-w-xs">Building the future of social media growth with premium engineering.</p>
+          </div>
+          <div className="text-center md:text-right">
+            <p className="text-white font-bold mb-1">Gautam Sharma (CEO) | Yashraj Joshi (CMO)</p>
+            <p className="text-gray-600 text-xs uppercase tracking-widest">© 2026 Reachora Cloud Agency. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+
+      {/* --- MOBILE CTA BUTTON --- */}
+      <a 
+        href="tel:9983739816" 
+        className="fixed bottom-6 right-6 bg-yellow-500 text-black p-5 rounded-full shadow-[0_10px_30px_rgba(234,179,8,0.4)] md:hidden z-50 animate-bounce"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
